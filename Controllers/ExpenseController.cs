@@ -70,10 +70,10 @@ public class ExpenseController  : ControllerBase
 
     [Authorize]
     [HttpGet("filter")]
-    public async Task<ActionResult<List<Expense>>> GetByUserTimeAsync([FromQuery] TimeFilter filter)
+    public async Task<IActionResult> GetByUserTimeAsync([FromQuery] ExpenseFilterDTO expenseFilterDTO)
     {
         int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? throw new UnauthorizedAccessException("Unauthorized"));
-        var expenses = await _expenseServices.GetAllByTimeAsync(userId, filter);
+        var expenses = await _expenseServices.GetAllByConditionsAsync(userId, expenseFilterDTO);
         return Ok(expenses);
     }
 }

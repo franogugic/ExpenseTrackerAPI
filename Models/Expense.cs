@@ -25,7 +25,8 @@ public class Expense
     public string? Description { get; set; }        
 
     [Required]
-    public DateTime Date { get; set; } = DateTime.UtcNow; 
+    [Column(TypeName = "date")]
+    public DateTime Date { get; set; } 
 
     public User User { get; set; } = null!;
 }
