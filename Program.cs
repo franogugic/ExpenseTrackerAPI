@@ -1,5 +1,6 @@
 using System.Text;
 using ExpenceTrackerAPI.Data;
+using ExpenceTrackerAPI.Middleware;
 using ExpenceTrackerAPI.Models.DTOs;
 using ExpenceTrackerAPI.Services;
 using ExpenceTrackerAPI.Validators;
@@ -76,6 +77,8 @@ builder.Services.AddAuthentication("Bearer").AddJwtBearer(options =>
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {   
