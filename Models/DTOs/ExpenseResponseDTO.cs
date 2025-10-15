@@ -2,7 +2,7 @@ using ExpenceTrackerAPI.Models.Enums;
 
 namespace ExpenceTrackerAPI.Models.DTOs;
 
-public class ExpenseCreateResponseDTO
+public class ExpenseResponseDTO
 {
         public int Id { get; set; }    
         public string Title { get; set; } = null!;
