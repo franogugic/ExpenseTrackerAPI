@@ -25,5 +25,9 @@ public class AppDbContext : DbContext
             .HasOne(e => e.User)
             .WithMany(u => u.Expenses)
             .HasForeignKey(e => e.UserId);
+
+        modelBuilder.Entity<Expense>()
+            .Property(e => e.Category)
+            .HasConversion<string>();
     }
 }

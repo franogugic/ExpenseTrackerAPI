@@ -1,18 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ExpenceTrackerAPI.Models.Enums;
 
 namespace ExpenceTrackerAPI.Models;
-
-public enum ExpenseCategory
-{
-    Groceries,
-    Leisure,
-    Electronics,
-    Utilities,
-    Clothing,
-    Health,
-    Others
-}
 
 public class Expense
 {
@@ -20,7 +10,10 @@ public class Expense
     public int Id { get; set; }
 
     [Required]
-    public int UserId { get; set; }                 
+    public int UserId { get; set; }          
+    
+    [Required]
+    public string Title { get; set; } = null!;
 
     [Required]
     [Column(TypeName = "decimal(18,2)")]
